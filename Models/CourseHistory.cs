@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 
-    namespace StudentEnrollment.Models
-    {
-    using System;
-    using System.ComponentModel.DataAnnotations;
+
+    //namespace StudentEnrollment.Models
+    //{
+    //using System;
+    //using System.ComponentModel.DataAnnotations;
 
     namespace StudentEnrollment.Models
     {
@@ -26,10 +28,12 @@ using System.Web;
             [Required(ErrorMessage = "CourseId is required.")]
             public int CourseId { get; set; }
 
-            // Action: A string describing what action occurred (e.g., "Course Created", "Course Updated")
+            // Action: A string describing what action occurred (e.g., "ADD", "DELETE")
             [Required(ErrorMessage = "Action is required.")]
             [StringLength(100, ErrorMessage = "Action cannot be longer than 100 characters.")]
-            public ActionType Action { get; set; }
+            //Comented the code below as no longer use this one
+            //public ActionType Action { get; set; }
+            public String Action { get; set; }
 
             // Optional: Timestamp when the action occurred
             [Required(ErrorMessage = "Action Date is required.")]
@@ -43,4 +47,4 @@ using System.Web;
             public int UserId { get; set; }
         }
     }
-}
+//}
