@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace StudentEnrollment.Models
 {
-
-    public enum Status
-    {
-       ACTIVE,
-       INACTIVE
-    }
+    //Unnecessary datatype for two state status ACTIVE, DISABLE
+    //public enum StatusEnum
+    //{
+    //   ACTIVE,
+    //   INACTIVE
+    //}
     public class Course
     {
         // Unique identifier for the course
@@ -56,6 +56,7 @@ namespace StudentEnrollment.Models
         [Required(ErrorMessage = "Department ID is required.")]
         public int DepartmentID { get; set; }
 
-        public StatusEnum Status
+        //Enum changed to boolean. easy to handle two status    
+        public bool IsActive { get; set; }
     }
 }
