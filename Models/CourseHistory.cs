@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 
-    //namespace StudentEnrollment.Models
-    //{
-    //using System;
-    //using System.ComponentModel.DataAnnotations;
+//namespace StudentEnrollment.Models
+//{
+//using System;
+//using System.ComponentModel.DataAnnotations;
 
-    namespace StudentEnrollment.Models
+namespace StudentEnrollment.Models
     {
 
         public enum ActionType
@@ -22,11 +23,21 @@ using System.ComponentModel.DataAnnotations;
         {
             // Primary Key: Unique identifier for the course history record
             [Key]
-            public int Id { get; set; }
+            [Column(Order =1 )]
+            public int ID { get; set; }
 
             // Foreign Key: ID of the related course
             [Required(ErrorMessage = "CourseId is required.")]
-            public int CourseId { get; set; }
+
+        //Commented the courseId below. Because it is so unnecessary.
+        //public int CourseId { get; set; }
+            [Column(Order = 2)]
+    
+            public String CourseCode { get; set; }
+            [Column(Order = 3)]
+                public String CourseName { get; set; }
+            [Column(Order = 4)]
+            public String Description { get; set; }
 
             // Action: A string describing what action occurred (e.g., "ADD", "DELETE")
             [Required(ErrorMessage = "Action is required.")]
@@ -40,11 +51,12 @@ using System.ComponentModel.DataAnnotations;
             public DateTime ActionDate { get; set; }
 
             // Navigation property: This allows us to easily access the related Course data (optional)
-            public virtual Course Course { get; set; }
+            //Removed the navigation property. so it wont create foreign key constraint with course model autoamatically
+            //public virtual Course Course { get; set; } 
 
             // UserId: The user who performed the action
             [Required(ErrorMessage = "UserId is required.")]
-            public int UserId { get; set; }
+            public int UserId {  get; set; }
         }
     }
 //}
