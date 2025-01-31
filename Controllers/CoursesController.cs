@@ -158,7 +158,7 @@ namespace StudentEnrollment.Controllers
 
             db.Courses.Remove(course);
             db.CoursesHistory.Add(courseHistory);
-            db.SaveChangesAsync();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
         //public string GetCourseCode([Bind(Include = "CourseId,CourseName,Description,Credits,Instructor,StartDate,EndDate,DepartmentID")] Course Course)
