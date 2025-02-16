@@ -19,8 +19,15 @@ namespace StudentEnrollment.Controllers
         // GET: Courses
         public async Task<ActionResult> Index()
         {
-            return View(await db.Courses.ToListAsync());
+            var viewModel = new CourseManagementViewModel
+            {
+                Courses = await db.Courses.ToListAsync(),
+                CourseHistory = await db.CoursesHistory.ToListAsync()
+            };
+
+            return View(viewModel);
         }
+
 
         // GET: Courses/Details/5
         public async Task<ActionResult> Details(int? id)

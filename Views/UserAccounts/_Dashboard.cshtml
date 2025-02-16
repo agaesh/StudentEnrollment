@@ -1,0 +1,65 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-fluid mt-4 ">
+    <div class="row">
+        <!-- User Management Card -->
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-body text-center">
+                    <h5 class="card-title"><b>User Management</b></h5>
+                    <p class="card-text">Manage users, roles, and permissions.</p>
+                    <a href="@Url.Action("Index", "UserManagement")" class="btn btn-light">Go to Users</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Management Card -->
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3" style="background-color: #F5F5DC">
+                <div class="card-body text-center">
+                    <h5 class="card-title"><b>Course Management</b></h5>
+                    <p class="card-text">Manage courses and scheduling.</p>
+                    <a href="@Url.Action("Index", "CourseManagement")" class="btn btn-light">Go to Courses</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Management Card -->
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3" style="background-color: #F5F5DC">
+                <div class="card-body text-center">
+                    <h5 class="card-title"><b>Course Enrollment</b></h5>
+                    <p class="card-text">Enroll into courses that available now.</p>
+                    <a href="@Url.Action("Index", "CourseManagement")" class="btn btn-light">Go to Courses</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Management Card -->
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Course Management</h5>
+                    <p class="card-text">Manage courses and scheduling.</p>
+                    <a href="@Url.Action("Index", "CourseManagement")" class="btn btn-light">Go to Courses</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Management Card -->
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Course Management</h5>
+                    <p class="card-text">Manage courses and scheduling.</p>
+                    <a href="@Url.Action("Index", "CourseManagement")" class="btn btn-light">Go to Courses</a>
+                </div>
+            </div>
+        </div>
+        <!-- Add more dashboard cards here if needed -->
+    </div>
+</div>

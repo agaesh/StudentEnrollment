@@ -1,70 +1,78 @@
-﻿@model IEnumerable<StudentEnrollment.Models.Course>
+﻿@model StudentEnrollment.Models.CourseManagementViewModel
 
 @{
     ViewBag.Title = "Course Management";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<!-- Courses Table -->
+<h2>Courses</h2>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CourseName)
+            @Html.DisplayNameFor(model => model.Courses.FirstOrDefault().CourseCode)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Courses.FirstOrDefault().CourseName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Credits)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.InstructorCode)
+            @Html.DisplayNameFor(model => model.Courses.FirstOrDefault().Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StartDate)
+            @Html.DisplayNameFor(model => model.Courses.FirstOrDefault().Credits)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.DepartmentID)
+            @Html.DisplayNameFor(model => model.Courses.FirstOrDefault().DepartmentID)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Courses.FirstOrDefault().IsActive)
+        </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CourseName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Credits)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InstructorCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepartmentID)
-        </td>
-        <td>
-            @Html.ActionLink("View History", "Edit", new { id = item.CourseId }) |
-            @Html.ActionLink("Edit", "Edit", new { id = item.CourseId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.CourseId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
-        </td>
-    </tr>
-}
-
+    @if (Model.Courses != null && Model.Courses.Any())
+    {
+        foreach (var item in Model.Courses)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Credits)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentID)
+                </td>
+                <td>
+                    @(item.IsActive ? "ACTIVE" : "DISABLE")
+                </td>
+                <td>
+                    @Html.ActionLink("View History", "Edit", new { id = item.CourseId }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CourseId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CourseId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CourseId })
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="7" style="text-align:center;">No courses available.</td>
+        </tr>
+    }
 </table>
+
+<!-- Include CourseHistory Partial View -->
+@Html.Partial("_CourseHistory", Model.CourseHistory)

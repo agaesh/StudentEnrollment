@@ -4,8 +4,7 @@
     ViewBag.Title = "User Management";
 }
 
-<h2>Index</h2>
-
+<h2>@ViewBag.Title</h2>
 <p>
     @Html.ActionLink("Create Admin", "Create", new { isAdmin = true})
     @Html.ActionLink("Create Student", "Create", new { isAdmin = false})
@@ -14,7 +13,7 @@
     <tr>
         <th>
            FullName 
-        </th>
+        </th> 
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
@@ -35,33 +34,10 @@
         <th>
             @Html.DisplayNameFor(model => model.CreatedAt)
         </th>
-
-        @*<th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProgramType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProgramName)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.ICNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Department)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AdminPosition)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>*@
     </tr>
 
 @foreach (var item in Model) {
-<tr>
+<tr class="clickable-row">
 
     <td>
         @Html.Raw($"{item.FirstName} {item.LastName}")
