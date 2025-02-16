@@ -1,0 +1,231 @@
+﻿@model StudentEnrollment.Models.UserAccount
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UserAccount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoleType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoleType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedAt)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedAt)
+        </dt>
+
+
+
+        <dd>
+            @Html.DisplayFor(model => model.isActive)
+        </dd>
+         <dt>
+            @Html.DisplayNameFor(model => model.isActive)
+        </dt>
+
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProgramType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProgramType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProgramName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProgramName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ICNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ICNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdminPosition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminPosition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isActive)
+        </dd>*@
+    </dl>
+</div>
+<div class="info-container">
+    <div class="info-item">
+        <span class="info-label">@Html.DisplayNameFor(model => model.Address):</span>
+        <span class="info-value">@Html.DisplayFor(model => model.Address)</span>
+    </div>
+
+    <div class="info-item">
+        <span class="info-label">@Html.DisplayNameFor(model => model.ProgramType):</span>
+        <span class="info-value">@Html.DisplayFor(model => model.ProgramType)</span>
+    </div>
+
+    <div class="info-item">
+        <span class="info-label">@Html.DisplayNameFor(model => model.ProgramName):</span>
+        <span class="info-value">@Html.DisplayFor(model => model.ProgramName)</span>
+    </div>
+
+    <div class="info-item">
+        <span class="info-label">@Html.DisplayNameFor(model => model.ICNumber):</span>
+        <span class="info-value">@Html.DisplayFor(model => model.ICNumber)</span>
+    </div>
+
+    <div class="info-item">
+        <span class="info-label">@Html.DisplayNameFor(model => model.Department):</span>
+        <span class="info-value">@Html.DisplayFor(model => model.Department)</span>
+    </div>
+
+    <div class="info-item">
+        <span class="info-label">@Html.DisplayNameFor(model => model.AdminPosition):</span>
+        <span class="info-value">@Html.DisplayFor(model => model.AdminPosition)</span>
+    </div>
+
+    <div class="info-item">
+        <span class="info-label">@Html.DisplayNameFor(model => model.StartDate):</span>
+        <span class="info-value">@Html.DisplayFor(model => model.StartDate)</span>
+    </div>
+
+    <div class="info-item">
+        <span class="info-label">@Html.DisplayNameFor(model => model.isActive):</span>
+        <span class="info-value">@Html.DisplayFor(model => model.isActive)</span>
+    </div>
+</div>
+
+<style>
+    .info-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        max-width: 600px;
+    }
+
+    .info-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-label {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .info-value {
+        color: #555;
+    }
+</style>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

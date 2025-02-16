@@ -1,0 +1,81 @@
+﻿@model StudentEnrollment.Models.UserAccount
+
+@{
+    ViewBag.Title = "Create";
+    bool isAdmin = false;  // Initialize it to avoid scope issues.
+
+    if (ViewBag.IsAdmin != null)
+    {
+        isAdmin = (bool)ViewBag.IsAdmin;  // Cast the value if it's not null.
+    }
+}
+
+<h2>Create Student</h2>
+
+@using (Html.BeginForm("Create", "UserAccounts", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Create Student</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @if (!isAdmin)
+        {
+            <div class="parent-container" style="display: flex;">
+                <div class="left-side" style="flex: 1; padding-right: 20px;">
+                    @Html.Partial("_Step1", (StudentEnrollment.Models.UserAccount)Model)
+                </div>
+
+                <div class="right-side" style="flex: 1;">
+                    <h4>Step 2: Account Information</h4>
+                    <hr />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", type = "email" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RoleType, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(model => model.RoleType, new { @class = "form-control", @disabled = "disabled" })
+                            @Html.HiddenFor(model => model.RoleType)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col text-left">
+                <div class="btn-group" role="group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="reset" value="Reset" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

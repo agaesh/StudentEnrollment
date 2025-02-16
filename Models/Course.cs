@@ -16,11 +16,16 @@ namespace StudentEnrollment.Models
         [Key] // Marks this property as the primary key (if using Entity Framework)
         public int CourseId { get; set; }
 
+        [DisplayName("Code")]
+        public String CourseCode { get; set; }
+
         // Name of the course
         [DisplayName("Course Title")]
         [Required(ErrorMessage = "Course name is required.")]
         [StringLength(100, ErrorMessage = "Course name cannot be longer than 100 characters.")]
         public string CourseName { get; set; }
+
+      
 
         // A brief description of the course
         [DisplayName("Description")]
@@ -45,18 +50,32 @@ namespace StudentEnrollment.Models
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "Start date is required.")]
         public DateTime StartDate { get; set; }
-
-        //// End date of the course
-        //[DataType(DataType.Date)]
-        //[Required(ErrorMessage = "End date is required.")]
-        ////[Compare("StartDate", ErrorMessage = "End date must be later than start date.")]
-        //public DateTime EndDate { get; set; }
        */
         // Department ID - for reference to the department the course belongs to
         [Required(ErrorMessage = "Department ID is required.")]
+        [DisplayName("Department ID")]
         public int DepartmentID { get; set; }
 
         //Enum changed to boolean. easy to handle two status    
+        [DisplayName("Status")]
         public bool IsActive { get; set; }
+
+      
+            public string GenerateCourseCode(int departmentId, string courseName, int courseId)
+            {
+                // Convert the DepartmentID to a string (you can format it as needed)
+                string departmentIdString = departmentId.ToString().PadLeft(3, '0'); // Example: 001
+
+                // Extract the first 3 letters of the CourseName
+                string courseNameShort = courseName.Length >= 3 ? courseName.Substring(0, 3).ToUpper() : courseName.ToUpper();
+
+                // Concatenate to form the CourseCode
+                string courseCode = $"{departmentIdString}-{courseNameShort}-{courseId:D4}"; // Example: 001-MAT-0001
+
+                return courseCode;
+            }
+  
+
+
     }
 }

@@ -3,9 +3,45 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - EnrollNow</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        /* Set the background color to blue */
+        body {
+            
+            color: black;
+        }
+
+        .jumbotron-bg {
+            background-image: url('/image/enroller.png'); /* Path to your image */
+            background-size: cover; /* Ensure the image covers the entire jumbotron */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            color: white; /* Optional: To ensure text stands out on the background */
+            padding: 40px; /* Optional: Adjust padding if needed */
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .navbar-inverse {
+            background-color: maroon; /* Dark maroon */
+            border-color: #003366;
+        }
+
+        .navbar-inverse .navbar-brand {
+            color: white; /* Change the navbar brand color to white */
+        }
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: white; /* Change the navbar link color to white */
+            font-weight:bolder;
+        }
+
+        .navbar-inverse .navbar-nav > li > a:hover {
+            color: #f8f8f8; /* Slightly lighter on hover */
+        }
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -16,7 +52,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <!-- Change the link text to "EnrollNow" -->
+                @Html.ActionLink("Enroller", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -31,7 +68,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Enroller</p>
         </footer>
     </div>
 

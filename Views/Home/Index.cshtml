@@ -1,31 +1,57 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@{ ViewBag.Title = "Student Enrollment System"; }
+@model StudentEnrollment.Models.UserAccount
+<div class="jumbotron jumbotron-bg">
+    <h2 style="font-weight:bolder;">Enroller - Student Enrollment System</h2>
+    <p class="lead">Our Student Enrollment System allows you to easily enroll, manage, and track students' courses, grades, and progress.</p>
+    <p><a href="/About" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<!-- Below parent container contains login form -->
+<div class="parent-container" style="display: flex; align-items: center;">
+    <div class="left-side" style="flex: 7; padding-right: 20px;">
+        <h3>Please log in as Admin or Student</h3>
+        <p>To access the system, please select your role and enter your email and password.</p>
+        <p>If you are an admin, choose "Admin" from the Role dropdown. If you are a student, choose "Student".</p>
+        <p>Make sure your email and password are correct. If you have forgotten your password, please contact the support team.</p>
+    </div>
+    <div class="right-side" style="flex: 3">
+        @using (Html.BeginForm("Login", "UserAccountsController", FormMethod.Post))
+        {@* Role Dropdown *@
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.RoleType, "Role")
+                            @Html.DropDownListFor(model => model.RoleType, new SelectList(new[] { "Admin", "Student" }), "Select Role", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.RoleType, "", new { @class = "text-danger" })
+                        </div> @* Email Input *@
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Email)
+                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", type = "email", required = "required" })
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                        </div> @* Password Input *@
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(model => model.Password)
+                                                            @Html.PasswordFor(model => model.Password, new { @class = "form-control", required = "required" })
+                                                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                        </div>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+                                                                        <button type="submit" class="btn btn-primary">Login</button>}
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="row">
+        <div class="col-md-4">
+            <h2 style="color:maroon;">Enroll a Student</h2>
+            <p>
+                Our system provides an easy-to-use interface for enrolling students in various courses and tracking their academic progress.
+            </p>
+            <p><a class="btn btn-default" href="/Enroll">Start Enrolling &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2 style="color:maroon;">Course Management</h2>
+            <p>Manage course offerings, schedules, and assign instructors to ensure students have the right resources for their education.</p>
+            <p><a class="btn btn-default" href="/Courses">Manage Courses &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2 style="color:maroon;">Student Progress</h2>
+            <p>Track and monitor students' progress, grades, and ensure they are meeting their academic goals.</p>
+            <p><a class="btn btn-default" href="/StudentProgress">View Progress &raquo;</a></p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>

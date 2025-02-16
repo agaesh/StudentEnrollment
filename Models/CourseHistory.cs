@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -28,32 +29,26 @@ namespace StudentEnrollment.Models
 
             // Foreign Key: ID of the related course
             [Required(ErrorMessage = "CourseId is required.")]
-
-        //Commented the courseId below. Because it is so unnecessary.
-        //public int CourseId { get; set; }
             [Column(Order = 2)]
-    
+            [DisplayName("Code")]
             public String CourseCode { get; set; }
             [Column(Order = 3)]
+            [DisplayName("Course Title")]
                 public String CourseName { get; set; }
+
             [Column(Order = 4)]
             public String Description { get; set; }
 
             // Action: A string describing what action occurred (e.g., "ADD", "DELETE")
             [Required(ErrorMessage = "Action is required.")]
             [StringLength(100, ErrorMessage = "Action cannot be longer than 100 characters.")]
-            //Comented the code below as no longer use this one
-            //public ActionType Action { get; set; }
+       
             public String Action { get; set; }
 
             // Optional: Timestamp when the action occurred
             [Required(ErrorMessage = "Action Date is required.")]
+            [DisplayName("Action Date")]
             public DateTime ActionDate { get; set; }
-
-            // Navigation property: This allows us to easily access the related Course data (optional)
-            //Removed the navigation property. so it wont create foreign key constraint with course model autoamatically
-            //public virtual Course Course { get; set; } 
-
             // UserId: The user who performed the action
             [Required(ErrorMessage = "UserId is required.")]
             public int UserId {  get; set; }
