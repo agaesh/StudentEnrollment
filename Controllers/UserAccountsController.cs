@@ -26,6 +26,18 @@ namespace StudentEnrollment.Controllers
             return View(await db.AccountModel.ToListAsync());
         }
 
+        public async Task<ActionResult> BankingDetail(int? id)
+        {
+            if (id == null && Session["UserID"] == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            // Your logic to fetch banking details goes here...
+
+            return View("ChangeBankDetails");
+        }
+
         // GET: UserAccounts/Details/5
         public async Task<ActionResult> Details(int? id)
         {
@@ -151,7 +163,7 @@ namespace StudentEnrollment.Controllers
         // GET: UserAccounts/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (id == null && Session["UserId"] == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
