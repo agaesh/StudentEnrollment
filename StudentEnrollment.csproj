@@ -150,12 +150,17 @@
     <Compile Include="Migrations\202502121242547_AccountUnnecessaryColumnDeleted.Designer.cs">
       <DependentUpon>202502121242547_AccountUnnecessaryColumnDeleted.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202502181435442_changedDataTypeRoleTypeToString.cs" />
+    <Compile Include="Migrations\202502181435442_changedDataTypeRoleTypeToString.Designer.cs">
+      <DependentUpon>202502181435442_changedDataTypeRoleTypeToString.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModelStep1.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseHistory.cs" />
     <Compile Include="Models\CourseManagementViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502121242547_AccountUnnecessaryColumnDeleted.resx">
       <DependentUpon>202502121242547_AccountUnnecessaryColumnDeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202502181435442_changedDataTypeRoleTypeToString.resx">
+      <DependentUpon>202502181435442_changedDataTypeRoleTypeToString.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

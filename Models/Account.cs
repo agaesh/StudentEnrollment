@@ -36,7 +36,7 @@ namespace StudentEnrollment.Models
 
         [Required(ErrorMessage = "Role is required.")]
         [DisplayName("Role")]
-        public RoleType RoleType { get; set; }
+        public String RoleType { get; set; }
 
             [Required(ErrorMessage ="Email is Required")]
             [EmailAddress]
@@ -56,8 +56,7 @@ namespace StudentEnrollment.Models
             [MaxLength(255)]
             public string Address { get; set; }
 
-            public ProgramType ProgramType { get; set; } = ProgramType.Other;
-
+            public ProgramType ProgramType { get; set; }
             [MaxLength(255)]
             [DisplayName("Program")]
             public string ProgramName { get; set; }
