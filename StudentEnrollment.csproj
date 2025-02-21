@@ -150,14 +150,6 @@
     <Compile Include="Migrations\202502121242547_AccountUnnecessaryColumnDeleted.Designer.cs">
       <DependentUpon>202502121242547_AccountUnnecessaryColumnDeleted.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202502181435442_changedDataTypeRoleTypeToString.cs" />
-    <Compile Include="Migrations\202502181435442_changedDataTypeRoleTypeToString.Designer.cs">
-      <DependentUpon>202502181435442_changedDataTypeRoleTypeToString.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202502202247266_AddedBankingDetails.cs" />
-    <Compile Include="Migrations\202502202247266_AddedBankingDetails.Designer.cs">
-      <DependentUpon>202502202247266_AddedBankingDetails.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202502210633462_CreatedCourseEnrollmentTable.cs" />
     <Compile Include="Migrations\202502210633462_CreatedCourseEnrollmentTable.Designer.cs">
       <DependentUpon>202502210633462_CreatedCourseEnrollmentTable.cs</DependentUpon>
@@ -261,12 +253,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502121242547_AccountUnnecessaryColumnDeleted.resx">
       <DependentUpon>202502121242547_AccountUnnecessaryColumnDeleted.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202502181435442_changedDataTypeRoleTypeToString.resx">
-      <DependentUpon>202502181435442_changedDataTypeRoleTypeToString.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202502202247266_AddedBankingDetails.resx">
-      <DependentUpon>202502202247266_AddedBankingDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202502210633462_CreatedCourseEnrollmentTable.resx">
       <DependentUpon>202502210633462_CreatedCourseEnrollmentTable.cs</DependentUpon>
