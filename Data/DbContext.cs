@@ -10,6 +10,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<UserAccount> AccountModel { get; set; }
     public DbSet<Contact> Contacts { get; set; }
 
+    public DbSet<Payment> Payments { get; set; }
+
     //public DbSet<CourseManagementViewModel> CourseAndHistoryModel { get; set; }
     // Other DbSets...
 

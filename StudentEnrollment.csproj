@@ -129,6 +129,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\UserAccountsController.cs" />
     <Compile Include="Data\DbContext.cs" />
     <Compile Include="Data\DbInititializer.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseHistory.cs" />
     <Compile Include="Models\CourseManagementViewModel.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
