@@ -1,4 +1,5 @@
-﻿@{ ViewBag.Title = "Student Enrollment System"; }
+﻿@{ ViewBag.Title = "Student Enrollment System";
+ var token = Html.AntiForgeryToken().ToString(); }
 @model StudentEnrollment.Models.UserAccount
 <div class="jumbotron jumbotron-bg">
     <h2 style="font-weight:bolder;">Enroller - Student Enrollment System</h2>
@@ -14,8 +15,11 @@
         <p>Make sure your email and password are correct. If you have forgotten your password, please contact the support team.</p>
     </div>
     <div class="right-side" style="flex: 3">
-        @using (Html.BeginForm("Login", "UserAccountsController", FormMethod.Post))
+        @Html.AntiForgeryToken()
+        @using (Html.BeginForm("Login", "UserAccounts", FormMethod.Post))
+
         {@* Role Dropdown *@
+            @Html.Raw(token)
                         <div class="form-group">
                             @Html.LabelFor(model => model.RoleType, "Role")
                             @Html.DropDownListFor(model => model.RoleType, new SelectList(new[] { "Admin", "Student" }), "Select Role", new { @class = "form-control" })
@@ -36,22 +40,22 @@
     </div>
 </div>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2 style="color:maroon;">Enroll a Student</h2>
-            <p>
-                Our system provides an easy-to-use interface for enrolling students in various courses and tracking their academic progress.
-            </p>
-            <p><a class="btn btn-default" href="/Enroll">Start Enrolling &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2 style="color:maroon;">Course Management</h2>
-            <p>Manage course offerings, schedules, and assign instructors to ensure students have the right resources for their education.</p>
-            <p><a class="btn btn-default" href="/Courses">Manage Courses &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2 style="color:maroon;">Student Progress</h2>
-            <p>Track and monitor students' progress, grades, and ensure they are meeting their academic goals.</p>
-            <p><a class="btn btn-default" href="/StudentProgress">View Progress &raquo;</a></p>
-        </div>
+<div class="row">
+    <div class="col-md-4">
+        <h2 style="color:maroon;">Enroll a Student</h2>
+        <p>
+            Our system provides an easy-to-use interface for enrolling students in various courses and tracking their academic progress.
+        </p>
+        <p><a class="btn btn-default" href="/Enroll">Start Enrolling &raquo;</a></p>
     </div>
+    <div class="col-md-4">
+        <h2 style="color:maroon;">Course Management</h2>
+        <p>Manage course offerings, schedules, and assign instructors to ensure students have the right resources for their education.</p>
+        <p><a class="btn btn-default" href="/Courses">Manage Courses &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2 style="color:maroon;">Student Progress</h2>
+        <p>Track and monitor students' progress, grades, and ensure they are meeting their academic goals.</p>
+        <p><a class="btn btn-default" href="/StudentProgress">View Progress &raquo;</a></p>
+    </div>
+</div>

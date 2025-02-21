@@ -69,7 +69,7 @@ namespace StudentEnrollment.Controllers
 
                 db.Courses.Add(course);
                 await db.SaveChangesAsync(); // Save the Course first so we can use its ID
-
+                 
                 // Create a new CourseHistory entry
                 var courseHistory = new CourseHistory
                 {
