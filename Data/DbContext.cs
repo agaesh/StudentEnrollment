@@ -27,4 +27,6 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Ignore<CourseManagementViewModel>();
         base.OnModelCreating(modelBuilder);
     }
+
+    public System.Data.Entity.DbSet<StudentEnrollment.Models.CourseEnrollment> CourseEnrollments { get; set; }
 }
