@@ -13,7 +13,7 @@ namespace StudentEnrollment.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202502202252235_CreatedCourseEnrollmentTable"; }
+            get { return "202502210633462_CreatedCourseEnrollmentTable"; }
         }
         
         string IMigrationMetadata.Source

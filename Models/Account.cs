@@ -25,7 +25,7 @@ namespace StudentEnrollment.Models
         }
         public enum Program
         {
-
+            
         }
 
         public class UserAccount
@@ -84,7 +84,12 @@ namespace StudentEnrollment.Models
             public string AdminPosition { get; set; }
 
             [DisplayName("Status")]
-        public bool IsActive { get; set; }
+            public bool IsActive { get; set; }
+
+            public String BankName { get; set; }
+
+            public String AccountNo { get; set; }
+            public String AccountType { get; set; }
 
         [DisplayName("Create Date")]
             public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
