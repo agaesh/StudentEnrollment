@@ -187,5 +187,47 @@ namespace StudentEnrollment.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public async Task<double> CalculateCourseCost(List<int> courseIds)
+        {
+            // Initialize totalCost variable
+            double totalCost = 0;
+
+            // Get course list by filtering out cost column only
+            var coursesActionResult = await GetCourses(courseIds);
+            if (coursesActionResult is ViewResult viewResult && viewResult.Model is List<Course> courses)
+            {
+                List<double> listOfCost = courses.Select(e => e.Cost).ToList();
+
+                // Loop and sum up the cost
+                foreach (double cost in listOfCost)
+                {
+                    totalCost += cost;
+                }
+            }
+
+            // Return total cost
+            return totalCost;
+        }
+
+        public async Task<ActionResult> GetCourses(List<int> courseIds)
+        {
+            //Null check on input
+            if (courseIds == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            //Get list of courses which matched courseIds
+            List<Course> courses = await db.Courses.Where(c => courseIds.Contains(c.CourseId)).ToListAsync();
+
+            if (courses == null || !courses.Any())
+            {
+                return HttpNotFound();
+            }
+
+            //Return list of courses
+            return View(courses);
+        }
     }
 }
