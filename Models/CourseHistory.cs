@@ -43,7 +43,7 @@ namespace StudentEnrollment.Models
             [Required(ErrorMessage = "Action is required.")]
             [StringLength(100, ErrorMessage = "Action cannot be longer than 100 characters.")]
        
-            public String Action { get; set; }
+            public bool IsActive { get; set; }
 
             // Optional: Timestamp when the action occurred
             [Required(ErrorMessage = "Action Date is required.")]

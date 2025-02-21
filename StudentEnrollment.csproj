@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -127,8 +127,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CourseEnrollmentsController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\UserAccountsController.cs" />
     <Compile Include="Data\DbContext.cs" />
     <Compile Include="Data\DbInititializer.cs" />
@@ -136,9 +138,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202501310312087_CourseAndCourseHistoru.cs" />
-    <Compile Include="Migrations\202501310312087_CourseAndCourseHistoru.Designer.cs">
-      <DependentUpon>202501310312087_CourseAndCourseHistoru.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202501310328397_IDCourseHistoryColumnOrder.cs" />
     <Compile Include="Migrations\202501310328397_IDCourseHistoryColumnOrder.Designer.cs">
       <DependentUpon>202501310328397_IDCourseHistoryColumnOrder.cs</DependentUpon>
@@ -166,12 +165,14 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountViewModelStep1.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseEnrollment.cs" />
     <Compile Include="Models\CourseHistory.cs" />
     <Compile Include="Models\CourseManagementViewModel.cs" />
     <Compile Include="Models\EnrollmentModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -48,15 +48,11 @@
                     </div>
 
                     <div class="form-group">
-                        @Html.DropDownListFor(model => model.RoleType,
-                            new SelectList(Enum.GetValues(typeof(StudentEnrollment.Models.RoleType))
-                                .Cast<StudentEnrollment.Models.RoleType>()
-                                .Select(e => new SelectListItem
-                                {
-                                    Value = e.ToString(),
-                                    Text = e.ToString()
-                                }), "Value", "Text", Model.RoleType), // Set the selected value
-                            new { @class = "form-control" })
+                        @Html.LabelFor(model => model.RoleType, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(model => model.RoleType, new { @class = "form-control", @disabled = "disabled" })
+                            @Html.HiddenFor(model => model.RoleType)
+                        </div>
                     </div>
                 </div>
             </div>

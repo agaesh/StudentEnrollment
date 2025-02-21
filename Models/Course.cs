@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web.UI.WebControls;
 
 namespace StudentEnrollment.Models
 {
@@ -60,22 +63,20 @@ namespace StudentEnrollment.Models
         [DisplayName("Status")]
         public bool IsActive { get; set; }
 
-      
-            public string GenerateCourseCode(int departmentId, string courseName, int courseId)
-            {
-                // Convert the DepartmentID to a string (you can format it as needed)
-                string departmentIdString = departmentId.ToString().PadLeft(3, '0'); // Example: 001
+        public double Cost { get; set; }
 
-                // Extract the first 3 letters of the CourseName
-                string courseNameShort = courseName.Length >= 3 ? courseName.Substring(0, 3).ToUpper() : courseName.ToUpper();
+        public string GenerateCourseCode(int departmentId, string courseName, int courseId)
+        {
+            // Convert the DepartmentID to a string (you can format it as needed)
+            string departmentIdString = departmentId.ToString().PadLeft(3, '0'); // Example: 001
 
-                // Concatenate to form the CourseCode
-                string courseCode = $"{departmentIdString}-{courseNameShort}-{courseId:D4}"; // Example: 001-MAT-0001
+            // Extract the first 3 letters of the CourseName
+            string courseNameShort = courseName.Length >= 3 ? courseName.Substring(0, 3).ToUpper() : courseName.ToUpper();
 
-                return courseCode;
-            }
-  
+            // Concatenate to form the CourseCode
+            string courseCode = $"{departmentIdString}-{courseNameShort}-{courseId:D4}"; // Example: 001-MAT-0001
 
-
+            return courseCode;
+        }
     }
 }

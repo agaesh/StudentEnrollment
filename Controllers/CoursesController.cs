@@ -69,14 +69,14 @@ namespace StudentEnrollment.Controllers
 
                 db.Courses.Add(course);
                 await db.SaveChangesAsync(); // Save the Course first so we can use its ID
-                 
+
                 // Create a new CourseHistory entry
                 var courseHistory = new CourseHistory
                 {
                     CourseCode = course.CourseCode,
                     CourseName = course.CourseName,
                     Description = course.Description,
-                    Action = "ADD",
+                    IsActive = true,
                     ActionDate = DateTime.Now,
                     UserId = 1 // Replace this with actual user ID if needed
                 };
@@ -158,7 +158,7 @@ namespace StudentEnrollment.Controllers
                 CourseCode = course.CourseCode,
                 CourseName = course.CourseName,
                 Description = course.Description,
-                Action = "DELETE",
+                IsActive = false,
                 ActionDate = DateTime.Now,
                 UserId = 1 // Replace this with actual user ID if needed
             };
@@ -186,6 +186,48 @@ namespace StudentEnrollment.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public async Task<double> CalculateCourseCost(List<int> courseIds)
+        {
+            // Initialize totalCost variable
+            double totalCost = 0;
+
+            // Get course list by filtering out cost column only
+            var coursesActionResult = await GetCourses(courseIds);
+            if (coursesActionResult is ViewResult viewResult && viewResult.Model is List<Course> courses)
+            {
+                List<double> listOfCost = courses.Select(e => e.Cost).ToList();
+
+                // Loop and sum up the cost
+                foreach (double cost in listOfCost)
+                {
+                    totalCost += cost;
+                }
+            }
+
+            // Return total cost
+            return totalCost;
+        }
+
+        public async Task<ActionResult> GetCourses(List<int> courseIds)
+        {
+            //Null check on input
+            if (courseIds == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            //Get list of courses which matched courseIds
+            List<Course> courses = await db.Courses.Where(c => courseIds.Contains(c.CourseId)).ToListAsync();
+
+            if (courses == null || !courses.Any())
+            {
+                return HttpNotFound();
+            }
+
+            //Return list of courses
+            return View(courses);
         }
     }
 }

@@ -26,18 +26,6 @@ namespace StudentEnrollment.Controllers
             return View(await db.AccountModel.ToListAsync());
         }
 
-        public async Task<ActionResult> BankingDetail(int? id)
-        {
-            if (id == null && Session["UserID"] == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            // Your logic to fetch banking details goes here...
-
-            return View("ChangeBankDetails");
-        }
-
         // GET: UserAccounts/Details/5
         public async Task<ActionResult> Details(int? id)
         {
@@ -63,12 +51,12 @@ namespace StudentEnrollment.Controllers
             {
                 // For admin users you might want to allow them to choose a RoleType,
                 // but if you want to set a default, you can do so here.
-                model.RoleType = "ADMIN"; // Set default value for admin
+                model.RoleType = StudentEnrollment.Models.RoleType.Student; // Set default value for admin
             }
             else
             {
                 // If the user is NOT an admin, force RoleType to Student.
-                model.RoleType = "STUDENT";
+                model.RoleType = StudentEnrollment.Models.RoleType.Student;
             }
 
             //This variable is important to control the UI. 
@@ -90,7 +78,7 @@ namespace StudentEnrollment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Firstname,ProgramType,ProgramName,FirstName,LastName,ICNumber,Email,Password, RoleType")] UserAccount userAccount)
+        public async Task<ActionResult> Create([Bind(Include = "Firstname,ProgramType,ProgramName,FirstName,LastName,ICNumber,Email,Password")] UserAccount userAccount)
         {
             try
             {
@@ -115,55 +103,10 @@ namespace StudentEnrollment.Controllers
             }
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login([Bind(Include = "RoleType, Email, Password")] LoginViewModel userAccount)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(userAccount);
-            }
-
-            try
-            {
-                var user = await db.AccountModel
-                    .FirstOrDefaultAsync(u => u.Email == userAccount.email && u.RoleType == userAccount.roletype);
-
-                if (user == null)
-                {
-                    ModelState.AddModelError("", "Invalid email, role, or password.");
-                    return View(userAccount);
-                }
-
-                // Set session or authentication cookie
-                // Set authentication session
-
-                Session["UserId"] = user.ID;
-                Session["UserEmail"] = user.Email;
-                Session["UserRole"] = user.RoleType;
-
-                return RedirectToAction("_Dashboard", "UserAccounts"); // Redirect after login
-
-            }
-
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", "An error occurred while processing your request.");
-                // Log the error (ex)
-            }
-
-            return View(userAccount);
-        }
-        private bool VerifyPassword(string inputPassword, string storedPasswordHash)
-        {
-            // Implement password hashing verification logic (e.g., BCrypt, SHA256)
-            return inputPassword == storedPasswordHash; // Replace with actual hash check
-        }
-
         // GET: UserAccounts/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
-            if (id == null && Session["UserId"] == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -225,7 +168,32 @@ namespace StudentEnrollment.Controllers
             }
             base.Dispose(disposing);
         }
-        private async Task<bool> IsValidUserAsync(String roleType, string email, string password)
+
+        public async Task<ActionResult> Login(UserAccount userAccount)
+        {
+            if (ModelState.IsValid)
+            {
+                // Authentication logic here
+                if (await IsValidUserAsync(userAccount.RoleType, userAccount.Email, userAccount.Password))
+                {
+                    // Redirect to a relevant page based on the role type
+                    if (userAccount.RoleType == RoleType.Admin)
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+                    else if (userAccount.RoleType == RoleType.Student)
+                    {
+                        return RedirectToAction("Index", "Student");
+                    }
+                }
+
+                ModelState.AddModelError(string.Empty, "Invalid login attempt");
+            }
+
+            return View(userAccount);
+        }
+
+        private async Task<bool> IsValidUserAsync(RoleType roleType, string email, string password)
         {
             // Replace this with your actual authentication logic
             var user = await db.AccountModel

@@ -8,6 +8,10 @@ public class ApplicationDbContext : DbContext
     public DbSet<Course> Courses { get; set; }
     public DbSet<CourseHistory>CoursesHistory { get; set; }
     public DbSet<UserAccount> AccountModel { get; set; }
+    public DbSet<Contact> Contacts { get; set; }
+
+    public DbSet<Payment> Payments { get; set; }
+
     //public DbSet<CourseManagementViewModel> CourseAndHistoryModel { get; set; }
     // Other DbSets...
 
