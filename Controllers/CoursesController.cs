@@ -76,7 +76,7 @@ namespace StudentEnrollment.Controllers
                     CourseCode = course.CourseCode,
                     CourseName = course.CourseName,
                     Description = course.Description,
-                    Action = "ADD"
+                    Action = "ADD",
                     ActionDate = DateTime.Now,
                     UserId = 1 // Replace this with actual user ID if needed
                 };

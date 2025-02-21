@@ -22,7 +22,7 @@ namespace StudentEnrollment.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Submit your enquiry form.";
 
             return View();
         }
