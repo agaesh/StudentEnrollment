@@ -137,7 +137,7 @@ namespace StudentEnrollment.Controllers
             catch (Exception ex)
             {
                 ModelState.AddModelError("", "An error occurred while processing your request.");
-                // Log the error (ex)
+                Console.WriteLine(ex)
             }
 
             return View(userAccount);
