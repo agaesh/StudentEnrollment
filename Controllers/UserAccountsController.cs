@@ -115,7 +115,7 @@ namespace StudentEnrollment.Controllers
             try
             {
                 var user = await db.AccountModel
-                    .FirstOrDefaultAsync(u => u.Email == userAccount.Email && u.RoleType == userAccount.roletype);
+                    .FirstOrDefaultAsync(u => u.Email == userAccount.Email && u.RoleType == userAccount.RoleType);
 
                 if (user == null)
                 {
