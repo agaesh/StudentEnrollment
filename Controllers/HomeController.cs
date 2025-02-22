@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using StudentEnrollment.Models;
 
 namespace StudentEnrollment.Controllers
 {
@@ -10,7 +11,8 @@ namespace StudentEnrollment.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var model = new LoginViewModel();
+            return View(model);  // Ensure you return LoginViewModel
         }
 
         public ActionResult About()
