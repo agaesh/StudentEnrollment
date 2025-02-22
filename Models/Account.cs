@@ -36,7 +36,7 @@ namespace StudentEnrollment.Models
 
         [Required(ErrorMessage = "Role is required.")]
         [DisplayName("Role")]
-        public RoleType RoleType { get; set; }
+        public String RoleType { get; set; }
 
             [Required(ErrorMessage ="Email is Required")]
             [EmailAddress]
@@ -87,10 +87,10 @@ namespace StudentEnrollment.Models
             [DisplayName("Status")]
             public bool IsActive { get; set; }
 
-            public String BankName { get; set; }
+            public string BankName { get; set; }
 
-            public String AccountNo { get; set; }
-            public String AccountType { get; set; }
+            public string AccountNo { get; set; }
+            public string AccountType { get; set; }
 
         [DisplayName("Create Date")]
             public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
